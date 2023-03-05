@@ -1,0 +1,30 @@
+<nav class="navbarr">
+    <div class="">
+        <ul>
+            <li><a class="" href="{{ path('app_home') }}">Logo</a></li>
+            <li><h1><a class="" href="{{ path('app_home') }}">Sézame livre toi !</a></h1></li>
+            <li>Devient ton propre éditeur de bande dessinée</li>
+            <li><a class="" href="{{ path('app_home') }}">Home</a></li>
+            <li>Category</li>
+            <li><a class="" href="{{ path('app_book') }}">BD</a></li>
+            <li><a class="" href="{{ path('app_collection') }}">Collection</a></li>
+            <li><a class="" href="{{ path('app_author') }}">Auteur</a></li>
+            <li>Panier</li>
+            <li>
+                <a class="" href="{{ path('app_user') }}">
+                    Connexion
+                </a>
+                <a class="" href="{{ path('app_register') }}">
+                    pas encore inscrit
+                </a>
+            </li>
+            <li>
+                {# <form action="{{ url("search/results") }}"> #}
+                <form action="#">
+                    <input type="search" name="q" placeholder="Search">
+                    <input type="submit" value="Go">
+                </form> 
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
@@ -21,6 +23,14 @@ class Author
 
     #[ORM\Column(length: 255)]
     private ?string $books = null;
+
+    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Book::class)]
+    private Collection $book;
+
+    public function __construct()
+    {
+        $this->book = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -62,4 +72,5 @@ class Author
 
         return $this;
     }
+
 }

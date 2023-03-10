@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+
+    <h1>dans votre pannier</h1>
+
+    <table>
+        <tr>
+            <td>titre</td>
+            <td>price</td>
+            <td>quantité</td>
+            <td>ISBN</td>
+            <td>image</td>
+            <td>total</td>
+        </tr>
+        <tr>
+        {# {% if %}
+            {% for %} #}
+                <td>chaton</td>
+                <td>7 €</td>
+                <td>1</td>
+                <td>956723498</td>
+                <td>chaton.jpg</td>
+                <td>7,99 €</td>
+            {# {% endfor %}
+        {% endif %} #}
+        </tr>
+    </table>
+
+{% endblock %}
+

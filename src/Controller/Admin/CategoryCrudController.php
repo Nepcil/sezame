@@ -2,22 +2,20 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\User;
+use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
-class UserCrudController extends AbstractCrudController
+class CategoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return User::class;
+        return Category::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
-        yield Field::new('email');
-        yield Field::new('plainPassword')->setHelp('Laissez vide pour conserver le mot de passe actuel')->onlyOnForms();
+        yield Field::new('name');
     }
-
+    
 }

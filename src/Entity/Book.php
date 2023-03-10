@@ -3,7 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
-use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
@@ -31,6 +32,21 @@ class Book
 
     #[ORM\Column]
     private ?int $ranking = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Books')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Category $category = null;
+
+    #[ORM\ManyToMany(targetEntity: Author::class)]
+    private Collection $author;
+
+    #[ORM\Column(length: 255)]
+    private ?string $no = null;
+
+    public function __construct()
+    {
+        $this->author = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -105,6 +121,42 @@ class Book
     public function setRanking(int $ranking): self
     {
         $this->ranking = $ranking;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Author>
+     */
+    public function getAuthor(): Collection
+    {
+        return $this->author;
+    }
+
+    public function addAuthor(Author $author): self
+    {
+        if (!$this->author->contains($author)) {
+            $this->author->add($author);
+        }
+
+        return $this;
+    }
+
+    public function removeAuthor(Author $author): self
+    {
+        $this->author->removeElement($author);
 
         return $this;
     }

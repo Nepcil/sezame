@@ -1,18 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Book{% endblock %}
+{% block title %}Les BD : bande dessinées{% endblock %}
 
 {% block body %}
-<style>
-
-</style>
+    <h1>Les bandes dessinées</h1>
     {% if books | length > 0 %}
         {% for book in books %}
             <div class="example-wrapper">
-                <h1>{{ book.title }}</h1>
-                <p>{{ book.summary }}</p>
-                <p>{{ book.price }} €</p>
-                <p>{{ book.ranking }}</p>
+                <ul>
+                    <li><h2>{{ book.title }}</h2></li>
+                    <li><a href="showPage/show.html.twig"><img src="{{ book.picture }}" alt="{{ book.title }}"></a></li>
+                    <li><p>{{ author.firstname }}</p></li>
+                    <li><p>{{ author.lastname }}</p></li>
+                    <li><p>{{ book.price }} €</p></li>
+                    <li><p>{{ book.ranking }}</p></li>
+                </ul>
             </div>
         {% endfor %}
     {% endif %}

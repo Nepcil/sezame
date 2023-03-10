@@ -18,7 +18,7 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Book::class)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Book::class, /*onDelete: 'CASCADE'*/)]
     private Collection $Books;
 
     public function __construct()

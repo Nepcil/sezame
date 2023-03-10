@@ -1,0 +1,9 @@
+vich_uploader:
+    db_driver: orm
+#     storage: gaufrette
+
+#     mappings:
+#         books:
+#             uri_prefix: /uploads
+#             upload_destination: picture
+#     #        namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

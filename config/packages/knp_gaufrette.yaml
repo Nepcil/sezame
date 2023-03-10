@@ -1,0 +1,12 @@
+# # config/packages/knp_gaufrette.yaml
+# knp_gaufrette:
+#     stream_wrapper: ~
+#     adapters:
+#         picture:
+#             local:
+#                 directory: '%kernel.project_dir%/public/uploads ' 
+# # config/packages/knp_gaufrette.yaml
+#         filesystems:
+#             picture: 
+#                 adapter:    picture
+#                 alias:      picture_filesystem       

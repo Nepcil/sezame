@@ -3,21 +3,28 @@
 namespace App\Entity;
 
 use App\Repository\BookRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 #[Vich\Uploadable]
-
 class Book
 {
+    use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[Vich\UploadableField(mapping: 'picture', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -36,24 +43,6 @@ class Book
 
     #[ORM\Column]
     private ?int $ranking = null;
-
-    #[ORM\ManyToOne(inversedBy: 'Books')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?Category $category = null;
-
-    #[ORM\ManyToMany(targetEntity: Author::class)]
-    private Collection $author;
-
-    #[ORM\Column(length: 255)]
-    private ?string $image  = null;
-
-    #[Vich\UploadableField(mapping: 'picture ', fileNameProperty: 'image')]
-    private ?File $imageFile = null;
-
-    public function __construct()
-    {
-        $this->author = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -132,55 +121,7 @@ class Book
         return $this;
     }
 
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, Author>
-     */
-    public function getAuthor(): Collection
-    {
-        return $this->author;
-    }
-
-    public function addAuthor(Author $author): self
-    {
-        if (!$this->author->contains($author)) {
-            $this->author->add($author);
-        }
-
-        return $this;
-    }
-
-    public function removeAuthor(Author $author): self
-    {
-        $this->author->removeElement($author);
-
-        return $this;
-    }
-
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(?string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-  /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -199,8 +140,20 @@ class Book
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
+
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
 }

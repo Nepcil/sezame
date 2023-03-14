@@ -3,12 +3,14 @@
 {% block title %}Les auteurs{% endblock %}
 
 {% block body %}
-     {% if authors | length > 0 %}
+    <h1>Les auteurs</h1>
+    <div class="cadreAuthor">
+    {% if authors | length > 0 %}
         {% for author in authors %}
-            <div class="example-wrapper">
-                <h1>{{ author.firstname }}</h1>
-                <p>{{ author.lastname }}</p>
-            </div>
+            <a class="imgHomeBook" href="#">
+                <img class="imgBook" src="{{ asset('uploads/portraitH.jpg') }}" alt="#">
+            </a>    
         {% endfor %}
     {% endif %}
+</div>
 {% endblock %}

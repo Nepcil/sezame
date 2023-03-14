@@ -4,16 +4,16 @@
 
 {% block body %}
 
-    <h1>dans votre pannier</h1>
+    <h1>Dans votre panier</h1>
 
-    <table>
+    <table class="table">
         <tr>
-            <td>titre</td>
-            <td>price</td>
-            <td>quantité</td>
-            <td>ISBN</td>
-            <td>image</td>
-            <td>total</td>
+            <td class="tableTitle">Titre</td>
+            <td class="tableTitle">Price</td>
+            <td class="tableTitle">Quantité</td>
+            <td class="tableTitle">ISBN</td>
+            <td class="tableTitle">Image</td>
+            <td class="tableTitle">Total</td>
         </tr>
         <tr>
         {# {% if %}
@@ -27,7 +27,13 @@
             {# {% endfor %}
         {% endif %} #}
         </tr>
+        <tr>
+            <td class="totalPrice" colspan="6">7,99€</td>
+        </tr>
     </table>
-
+    <div class="buttonSubmit">
+        <button class="resetSubmit">supprimer</button>
+        <button class="totalSubmit">payer</button>
+    </div>
 {% endblock %}
 

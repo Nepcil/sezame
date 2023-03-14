@@ -6,7 +6,18 @@
 <style>
 
 </style>
-<h1 >Sézame livre toi</h1>
+<h1 >Sézame livre toi : catégories</h1>
+<div class="cadreBook">
+
+{% for book in books %}
+
+    <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
+        <img class="imgBook" src="{{ asset('uploads/{}') }}" alt="{{ book.title }}">
+    </a>
+
+{% endfor %}
+
+</div>
 
 
 {% endblock %}

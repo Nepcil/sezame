@@ -212,8 +212,11 @@
         -ms-overflow-style: none;
     }
     .sousCadreImg{
-        width:382%;
+        width:max-content;
+        height:335px;
         position:absolute;
+        left:0;
+        top:0;
     }
     .imgBookCollection{
         width:30px;
@@ -238,9 +241,6 @@
 /*--------------------------*/
 
 </style>
-<script>
-    
-</script>
 <nav class="navbar">
     <div class="nav">
         <div><a class="" href="{{ path('app_home') }}"><img class="logo" src="{{ asset('interface/sezame.png') }}" alt="logo"></a></div>

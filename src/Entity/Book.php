@@ -44,6 +44,12 @@ class Book
     #[ORM\Column]
     private ?int $ranking = null;
 
+    #[ORM\ManyToOne(inversedBy: 'books')]
+    private ?Category $Category = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $no = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +160,30 @@ class Book
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->Category;
+    }
+
+    public function setCategory(?Category $Category): self
+    {
+        $this->Category = $Category;
+
+        return $this;
+    }
+
+    public function getNo(): ?string
+    {
+        return $this->no;
+    }
+
+    public function setNo(string $no): self
+    {
+        $this->no = $no;
+
+        return $this;
     }
 
 }

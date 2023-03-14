@@ -15,38 +15,43 @@ use Symfony\Component\Routing\Annotation\Route;
 class CreatetController extends AbstractController
 {
     #[Route('/create', name: 'app_create')]
-    #[Route('/create/add', name:'create_add')]
-    #[Route('/create/{id}/edit', name:'create_edit')]
-    
-    public function index(?Book $book, Request $request, EntityManagerInterface $entityManager): Response
+    public function index(): Response
     {
-        if (!$book) {
-            $book = new Book();
-        }
-
-        $form = $this->createForm(BookType::class, $book);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()){
-            $entityManager->persist($book);
-            $entityManager->flush();
-
-            return $this->redirect($this->generateUrl('book_edit', ['id' => $book->getId()]));
-        }
-
         return $this->render('create/index.html.twig', [
-            'form' => $form->createView()
+            'controller_name' => 'BuyerController',
         ]);
     }
-
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->add('title')
-            ->add('picture')
-            ->add('summuary')
-            ->add('isbn')
-            ->add('price')
-        ;
-    }
 }
+
+// #[Route('/create', name:'app_create')]
+//     public function index(?Book $book, Request $request, EntityManagerInterface $entityManager): Response
+//     {
+//         if (!$book) {
+//             $book = new Book();
+//         }
+
+//         $form = $this->createForm(BookType::class, $book);
+
+//         $form->handleRequest($request);
+//         if ($form->isSubmitted() && $form->isValid()){
+//             $entityManager->persist($book);
+//             $entityManager->flush();
+
+//             return $this->redirect($this->generateUrl('book_edit', ['id' => $book->getId()]));
+//         }
+
+//         return $this->render('create/index.html.twig', [
+//             'form' => $form->createView()
+//         ]);
+//     }
+
+//     public function buildForm(FormBuilderInterface $builder, array $options)
+//     {
+//         $builder
+//             ->add('title')
+//             ->add('picture')
+//             ->add('summuary')
+//             ->add('isbn')
+//             ->add('price')
+//         ;
+//     }

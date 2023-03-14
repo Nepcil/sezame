@@ -13,7 +13,7 @@ class CollectionController extends AbstractController
     public function index(CollectionRepository $collectionRepository): Response
     {
         return $this->render('collection/index.html.twig', [
-            'collection' => $collectionRepository->findAll(),
+            'collection' => $collectionRepository,
         ]); 
     }
 }

@@ -24,6 +24,7 @@ class Category
     public function __construct()
     {
         $this->Books = new ArrayCollection();
+        $this->Books = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,7 +51,6 @@ class Category
     {
         return $this->Books;
     }
-
     public function addBook(Book $book): self
     {
         if (!$this->Books->contains($book)) {

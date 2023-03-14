@@ -6,31 +6,14 @@
 
     <h1>Collection de bandes dessinées</h1>
     <div class="cadreBook">
+        {% if collection | length > 0 %}
+            {% for collection in collections %}
                 <h2 class="titleSlide">Lanfeust</h2>
                 <div class="cadreImg">
                     <div class="sousCadreImg">
-                        
                         <a href="#">
                             <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
                         </a>
-                        
                     </div>
                 </div>
                 <div class="commandeCollection">
@@ -38,11 +21,13 @@
                     <img class="imgBookCollection" src="{{ asset('interface/livre.png') }}" alt="collection">
                     <button class="btnBookCollection">commander</button>
                 </div>
-                <p class="summary">Lanfeust est un jeune homme qui a le pouvoir de faire fondre l'acier, 
-                un jour il découvre que grâce à une épée il acquiert un pouvoir ultime . 
-                Sa quête commence alors, il est accompagné pour cela du sage Nicolède 
-                de ses deux jolies filles et d'un troll ensorcelé..</p>
-            </div>
+                    <p class="summary">Lanfeust est un jeune homme qui a le pouvoir de faire fondre l'acier, 
+                    un jour il découvre que grâce à une épée il acquiert un pouvoir ultime . 
+                    Sa quête commence alors, il est accompagné pour cela du sage Nicolède 
+                    de ses deux jolies filles et d'un troll ensorcelé..</p>
+                </div>
+            {% endfor %}
+        {% endif %}
     {% if collections | length > 0 %}
         {% for collection in collections %}
             <div class="example-wrapper">

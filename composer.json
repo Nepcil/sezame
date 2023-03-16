@@ -12,6 +12,7 @@
         "doctrine/orm": "^2.14",
         "easycorp/easyadmin-bundle": "*",
         "knplabs/knp-gaufrette-bundle": "^0.8.0",
+        "liip/imagine-bundle": "*",
         "stof/doctrine-extensions-bundle": "^1.7",
         "symfony/console": "6.2.*",
         "symfony/dotenv": "6.2.*",

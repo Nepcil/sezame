@@ -4,7 +4,7 @@ knp_gaufrette:
     adapters:
         picture:
             local:
-                directory: '%kernel.project_dir%/public/uploads' 
+                directory: '%kernel.project_dir%/public' 
 # config/packages/knp_gaufrette.yaml
     filesystems:
         picture:

@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BookController extends AbstractController
 {
-    #[Route('/book', name: 'app_book')]
+    #[Route('/book/{id<\d+>}', name: 'app_book')]
     public function index(BookRepository $bookRepository): Response
     {
         return $this->render('book/index.html.twig', [

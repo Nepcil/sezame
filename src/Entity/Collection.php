@@ -17,6 +17,10 @@ class Collection
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $picture = null;
+
+
     #[ORM\Column]
     private ?float $price = null;
 
@@ -30,7 +34,7 @@ class Collection
     private ?string $summary = null;
 
     #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Category $category = null;
 
     public function getId(): ?int
@@ -50,6 +54,17 @@ class Collection
         return $this;
     }
 
+    public function getPicture(): ?string
+    {
+        return $this->title;
+    }
+    public function setPicture(string $picture): self
+    {
+        $this->picture = $picture;
+
+        return $this;
+    }
+
     public function getPrice(): ?float
     {
         return $this->price;
@@ -58,18 +73,6 @@ class Collection
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getIsbn(): ?int
-    {
-        return $this->isbn;
-    }
-
-    public function setIsbn(int $isbn): self
-    {
-        $this->isbn = $isbn;
 
         return $this;
     }

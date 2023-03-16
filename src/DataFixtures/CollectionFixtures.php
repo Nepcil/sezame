@@ -10,9 +10,14 @@ class CollectionFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $collection = new Collection();
-        $manager->persist($collection);
+        $collectionManager = new Collection();
+        $collectionManager->setTitle('titre de l\'ouvrage');
+        $collectionManager->setPicture('picture.jpg');
+        $collectionManager->setSummary('resumé de l\'ouvrage');
+        $collectionManager->setPrice(12);
+        $collectionManager->setRanking(3);
 
+        $manager->persist($collectionManager);
         $manager->flush();
     }
 }

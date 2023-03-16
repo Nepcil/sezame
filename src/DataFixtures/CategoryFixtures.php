@@ -12,9 +12,9 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $category = new Category();
-        $category->setName('genre');
-        $manager->persist($category);
+        $category->setName('Liste de Categories');
         $this->addReference(self::CATEGORY, $category);
+        $manager->persist($category);
 
         $manager->flush();
     }

@@ -3,10 +3,20 @@ vich_uploader:
     storage: gaufrette
 
     mappings:
-        books:
-            uri_prefix: /uploads
-            upload_destination: picture
+        authors:
+            uri_prefix: /authors
+            upload_destination: '%kernel.project_dir%/public/authors'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        bookPictures:
+                uri_prefix: /books-pictures
+                upload_destination: '%kernel.project_dir%/public/books-pictures'
+                namer: 'Vich\UploaderBundle\Naming\SmartUniqueNamer'
+
+        allBooks:
+            uri_prefix: /allBooks
+            upload_destination: '%kernel.project_dir%/public/allBooks'
+            namer: 'Vich\UploaderBundle\Naming\SmartUniqueNamer'
             
             inject_on_load: false
             delete_on_update: true

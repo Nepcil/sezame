@@ -12,7 +12,7 @@
 {% for book in books %}
 
     <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
-        <img class="imgBook" src="{{ asset('uploads/{}') }}" alt="{{ book.title }}">
+        <img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}">
     </a>
 
 {% endfor %}

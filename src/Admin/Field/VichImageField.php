@@ -4,9 +4,9 @@ namespace App\Admin\Field;
  
 use EasyCorp\Bundle\EasyAdminBundle\Contracts\Field\FieldInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FieldTrait;
-use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
-final class VichFileField implements FieldInterface
+final class VichImageField implements FieldInterface
 {
     use FieldTrait;
 
@@ -16,11 +16,11 @@ final class VichFileField implements FieldInterface
             ->setProperty($propertyName)
             ->setLabel($label)
             // this template is used in 'index' and 'detail' pages
-            ->setTemplatePath('AdminField/vich_file.html.twig')
+            ->setTemplatePath('Admin/Field/vich_image.html.twig')
             // this is used in 'edit' and 'new' pages to edit the field contents
             // you can use your own form types too
-            ->setFormType(VichFileType ::class)
-            ->addCssClass('field-vich-type') 
+            ->setFormType(VichImageType::class)
+            ->addCssClass('field-vich-image')
         ;
     }
 }

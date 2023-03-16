@@ -63,7 +63,7 @@ h2 {
     width: 200px;
     height: auto;
     display: block;
-    background: grey;
+    background: lightgrey;
     border-radius: 10px;
     text-align: center;
     position: relative;
@@ -72,13 +72,24 @@ h2 {
 }
 
 .categLink {
-    color: white;
+    color: gray;
+}
+
+.categLink:hover {
+    color: #955912;
 }
 
 .titreCateg {
-    color: lightgrey;
+    color: #955912;;
 }
 
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    font-size: 80px;
+}
 /*--------------------form---------------------------*/
 
 .search, .formInput, .formInputUser {

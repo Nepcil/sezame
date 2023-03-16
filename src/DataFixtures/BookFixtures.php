@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Author;
 use App\Entity\Book;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -16,7 +15,7 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
     {
         $bookManager = new Book();
         $bookManager->setTitle('titre de l\'ouvrage');
-        $bookManager->setCategory($this->getReference(CategoryFixtures::BOOK));
+        $bookManager->setCategory($this->getReference(CategoryFixtures::class));
         $bookManager->setPicture('picture.jpg');  
         $bookManager->setSummary('resumé de l\'ouvrage');
         $bookManager->setIsbn(00000000000);

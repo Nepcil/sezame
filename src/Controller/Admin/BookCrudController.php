@@ -1,6 +1,6 @@
 <?php
 
-namespace Book;
+namespace App\Controller\Admin;
 
 use App\Admin\Field\VichFileField;
 use App\Entity\Book;

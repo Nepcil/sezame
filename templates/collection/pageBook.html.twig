@@ -16,10 +16,16 @@
                         </a>
                     </div>
                 </div>
-            {% else %}
-                <span class="empty">
-                    {% include "_part/pageBook.html.twig" %}
-                </span>
+                <div class="commandeCollection">
+                    <p class="price">132 €</p>
+                    <img class="imgBookCollection" src="{{ asset('interface/livre.png') }}" alt="collection">
+                    <button class="btnBookCollection">commander</button>
+                </div>
+                    <p class="summary">Lanfeust est un jeune homme qui a le pouvoir de faire fondre l'acier, 
+                    un jour il découvre que grâce à une épée il acquiert un pouvoir ultime . 
+                    Sa quête commence alors, il est accompagné pour cela du sage Nicolède 
+                    de ses deux jolies filles et d'un troll ensorcelé..</p>
+                </div>
             {% endfor %}
         {% endif %}
     {% if collections | length > 0 %}

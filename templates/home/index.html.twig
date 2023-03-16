@@ -14,10 +14,12 @@
     <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
         <img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}">
     </a>
-
+{% else %}
+    <span class="empty">
+        {% include "_part/pageBook.html.twig" %}
+    </span>
 {% endfor %}
 
 </div>
-
 
 {% endblock %}

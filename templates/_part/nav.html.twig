@@ -37,6 +37,9 @@
                 <p>panier</p>
             </a></li>
             <li>
+            {# {% if is_granted('ROLE_USER') %}
+            {% else %}
+            {% endif %} #}
                 <div class="login">
                     <a class="" href="{{ path('app_login') }}">
                         <img class="icon" src="{{ asset('interface/user.png') }}" alt="user">

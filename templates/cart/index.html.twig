@@ -5,35 +5,39 @@
 {% block body %}
 
     <h1>Dans votre panier</h1>
-
-    <table class="table">
-        <tr>
-            <td class="tableTitle">Titre</td>
-            <td class="tableTitle">Price en €</td>
-            <td class="tableTitle">Quantité</td>
-            <td class="tableTitle">ISBN</td>
-            <td class="tableTitle">Image</td>
-            <td class="tableTitle">Total en €</td>
-        </tr>
-        <tr>
-        {# {% if %}
-            {% for %} #}
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            {# {% endfor %}
-        {% endif %} #}
-        </tr>
-        <tr>
-            <td class="totalPrice" colspan="6">€</td>
-        </tr>
-    </table>
-    <div class="buttonSubmit">
-        <button class="resetSubmit">supprimer</button>
-        <button class="totalSubmit">payer</button>
-    </div>
+        <table class="table">
+            <tr>
+                <td class="tableTitle">Titre</td>
+                <td class="tableTitle">Price en €</td>
+                <td class="tableTitle">Quantité</td>
+                <td class="tableTitle">ISBN</td>
+                <td class="tableTitle">Image</td>
+                <td class="tableTitle">Total en €</td>
+            </tr>
+            <tr>
+            {# {% if %}
+                {% for %} #}
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                {# {% endfor %}
+            {% endif %} #}
+            </tr>
+            <tr>
+                <td class="totalPrice" colspan="6">€</td>
+            </tr>
+        </table>
+        <div class="buttonSubmit">
+            <button class="resetSubmit">supprimer</button>
+            <button class="totalSubmit">payer</button>
+        </div>
+    {# {% else %}
+        <span class="empty">
+            Votre panier est vide 
+        </span>
+    {% endfor %} #}
 {% endblock %}
 

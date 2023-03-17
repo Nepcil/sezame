@@ -83,15 +83,17 @@ h2 {
     color: #955912;;
 }
 
-.empty, .emptyP {
+.cadreEmpty {
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    left: 5%;
 }
 
 .emptyP {
-    margin-top: 10%;
     font-size: 80px;
+    text-align: center;
 }
 
 /*--------------------form---------------------------*/

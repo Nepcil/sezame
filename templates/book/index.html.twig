@@ -14,10 +14,8 @@
                         <li><p>{{ book.price }} €</p></li>
                         <li><p>{{ book.ranking }}</p></li>
                     </ul>
-            {% else %}
-                <span class="empty">
-                    Page vide
-                </span>
+            {% else %}        
+                {% include "_part/pageBook.html.twig" %}
             {% endfor %}
         {% endif %}
     </div>

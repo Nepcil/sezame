@@ -83,13 +83,17 @@ h2 {
     color: #955912;;
 }
 
-.empty {
+.empty, .emptyP {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.emptyP {
     margin-top: 10%;
     font-size: 80px;
 }
+
 /*--------------------form---------------------------*/
 
 .search, .formInput, .formInputUser {

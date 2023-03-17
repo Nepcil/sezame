@@ -9,6 +9,9 @@ twig:
         books: 'books'
         book: 'book'
 
+    paths:
+        '%kernel.project_dir%/assets/styles' : styles
+
 when@test:
     twig:
         strict_variables: true

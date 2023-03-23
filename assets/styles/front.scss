@@ -89,11 +89,19 @@ h2 {
     justify-content: center;
     align-items: center;
     left: 5%;
+    width: 100%;
+    margin: auto;
 }
 
 .emptyP {
     font-size: 80px;
     text-align: center;
+}
+
+.cart {
+    margin-top: 5%;
+    margin-left: -10%;
+    width: 100%;
 }
 
 /*--------------------form---------------------------*/

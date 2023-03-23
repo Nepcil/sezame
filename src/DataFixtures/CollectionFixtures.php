@@ -12,7 +12,6 @@ class CollectionFixtures extends Fixture
     {
         $collectionManager = new Collection();
         $collectionManager->setTitle('titre de l\'ouvrage');
-        $collectionManager->setPicture('picture.jpg');
         $collectionManager->setSummary('resumé de l\'ouvrage');
         $collectionManager->setPrice(12);
         $collectionManager->setRanking(3);

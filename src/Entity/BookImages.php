@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: BookImagesRepository::class)]
+#[Vich\Uploadable]
 class BookImages
 {
     use TimestampableEntity;
@@ -21,7 +22,7 @@ class BookImages
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
-    #[ORM\ManyToOne(inversedBy: 'bookPictures')]
+    #[ORM\ManyToOne(inversedBy: 'bookImages')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Book $book = null;
 
@@ -29,7 +30,7 @@ class BookImages
     private ?int $position = null;
 
     //NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'bookPictures', fileNameProperty: 'path')]
+    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'path')]
     private ?File $pathFile = null;
 
     public function getId(): ?int

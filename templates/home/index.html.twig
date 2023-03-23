@@ -6,7 +6,12 @@
 <style>
 
 </style>
-<h1 >Sézame livre toi : catégories</h1>
+<h1 >
+    Sézame livre toi :  
+    {% for category in category %}
+        {{ category }}
+    {% endfor %}
+</h1>
 <div class="cadreBook">
 
 {% for book in books %}

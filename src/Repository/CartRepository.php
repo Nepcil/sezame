@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Category;
+use App\Entity\Cart;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Category>
+ * @extends ServiceEntityRepository<Cart>
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Cart|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Cart|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Cart[]    findAll()
+ * @method Cart[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class CartRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Cart::class);
     }
 
-    public function save(Category $entity, bool $flush = false): void
+    public function save(Cart $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Category $entity, bool $flush = false): void
+    public function remove(Cart $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -39,13 +39,8 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
 //    /**
-//     * @return Category[] Returns an array of Category objects
+//     * @return Cart[] Returns an array of Cart objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -59,7 +54,7 @@ class CategoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Category
+//    public function findOneBySomeField($value): ?Cart
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

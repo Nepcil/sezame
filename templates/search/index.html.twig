@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat de vos recherches{% endblock %}
+
+{% block body %}
+    <h1>Résultat de vos recherche</h1>
+    {% if books | length > 0 %}
+        {% for book in books %}
+            {% block actions %}
+                {{ parent() }}
+            {% endblock %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}

@@ -13,9 +13,10 @@
                     <div class="cadreCateg">
                         <div class="categ">
                             <span class="titreCateg">Sélectionner un genre</span>
-                            {% for category in categories %}
-                                <a class="categLink" href="">{{ category.name }}</a><br>
-                            {% endfor %}
+                                {% for categories in category %}
+                                    {# <a class="categLink" href="#">{{ categories }}</a><br> #}
+                                    {{render(controller('App\\Controller\\CategoryController::categoryRender'))}}
+                                {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -51,11 +52,16 @@
                 </div>
             </li>
             <li>
-                <form name="resultSearch_Form" action="{{ path('app_resultSearch') }}">
+                {# <form name="resultSearch_Form" action="{{ path('app_resultSearch') }}">
                     <input class="search" type="search" name="q" placeholder="Search">
                     <input class="inputSubmitSearch" type="submit" value="">
                     <img class="loupe" src="{{ asset('interface/loupe.png') }}" alt="recherher">
-                </form> 
+                </form>  #}
+                {{ render(controller(
+                    'App\\Controller\\SearchController::searchBar', { 
+                        mySearch: app.request.get('my_search', []) 
+                    }
+                )) }}
             </li>
         </ul>
     </div>

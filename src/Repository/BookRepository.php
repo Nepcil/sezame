@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Book;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,6 +40,21 @@ class BookRepository extends ServiceEntityRepository
         }
     }
 
+    // public function createSearchQueryBuilder(string $q): QueryBuilder
+    // {
+    //     return $this->createQueryBuilder('b')
+    //                 ->andWhere('b.user = :user')
+    //                 ->setParameter('user', $user)
+    //                 ;
+    // }
+
+    public function createSearchQueryBuilder(string $q): QueryBuilder
+    {
+        return $this->createQueryBuilder('b')
+                    ->andWhere('b.title LIKE :q OR b.description LIKE :q')
+                    ->setParameter('q', '%'.$q.'%')
+                    ;
+    }
 //    /**
 //     * @return Book[] Returns an array of Book objects
 //     */

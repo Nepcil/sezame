@@ -28,17 +28,13 @@ class Book
     #[ORM\Column(nullable: true)]
     private ?string $imageName = null;
 
-    #[ORM\ManyToOne(inversedBy: 'book')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'SET NULL')]
-    private ?Category $category = null;
-
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: BookImages::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $bookImages;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $bookReader = null;
 
-    #[Vich\UploadableField(mapping: 'bookPictures', fileNameProperty: 'bookReader')]
+    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'bookReader')]
     private ?File $bookReaderFile = null;
 
     #[ORM\Column(length: 255)]
@@ -50,7 +46,7 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $picture = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $isbn = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -178,18 +174,6 @@ class Book
     public function getImageName(): ?string
     {
         return $this->imageName;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): self
-    {
-        $this->category = $category;
-
-        return $this;
     }
 
     /**

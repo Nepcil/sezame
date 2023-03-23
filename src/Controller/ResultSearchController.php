@@ -14,7 +14,7 @@ class ResultSearchController extends AbstractController
     {
         $resultSearchForm = $this->createFormBuilder(resultSearchType::class);
         return $this->render('search/resultSearch.html.twig',[
-            'resultSearch_Form' => $resultSearchForm->createView()
+            'resultSearchForm' => $resultSearchForm->createView()
         ]);
     }
 }

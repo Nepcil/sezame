@@ -1,9 +1,7 @@
 {% set book = entity.instance %}
 
-{% for bookImage in book.bookImages %}
-<img src="{{ vich_uploader_asset(bookImage, 'pathFile')|imagine_filter('admin_thumbnail') }}"
+{% for bookImages in book.bookImage %}
+<img src="{{ vich_uploader_asset( bookImages, 'path')|imagine_filter('admin_thumbnail') }}"
 {% else %}
-    <span class="badge-secondary">
-        Empty
-    </span>
+    {% include "_part/pageNotFound.html.twig" %}
 {% endfor %}

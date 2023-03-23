@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\AuthorRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
@@ -23,18 +21,6 @@ class Author
 
     #[ORM\Column(length: 255)]
     private ?string $books = null;
-
-    #[ORM\OneToMany(mappedBy: 'relation', targetEntity: Book::class)]
-    private Collection $book;
-
-    #[ORM\ManyToMany(targetEntity: self::class)]
-    private Collection $Book;
-
-    public function __construct()
-    {
-        $this->book = new ArrayCollection();
-        $this->Book = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -73,30 +59,6 @@ class Author
     public function setBooks(string $books): self
     {
         $this->books = $books;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, self>
-     */
-    public function getBook(): Collection
-    {
-        return $this->Book;
-    }
-
-    public function addBook(self $book): self
-    {
-        if (!$this->Book->contains($book)) {
-            $this->Book->add($book);
-        }
-
-        return $this;
-    }
-
-    public function removeBook(self $book): self
-    {
-        $this->Book->removeElement($book);
 
         return $this;
     }

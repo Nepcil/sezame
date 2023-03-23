@@ -5,6 +5,9 @@
 {% block body %}
 
     <h1>Dans votre panier</h1>
+
+    
+
         <table class="table">
             <tr>
                 <td class="tableTitle">Titre</td>
@@ -15,29 +18,37 @@
                 <td class="tableTitle">Total en €</td>
             </tr>
             <tr>
-            {# {% if %}
-                {% for %} #}
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                {# {% endfor %}
-            {% endif %} #}
+
+    {% if cart | length > 0  %} 
+
+            {% for cart in carts %}
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            {% endfor %}
+
+            
             </tr>
             <tr>
                 <td class="totalPrice" colspan="6">€</td>
             </tr>
         </table>
+    {% endif %}
+    {% if cart | length < 0 %}
         <div class="buttonSubmit">
             <button class="resetSubmit">supprimer</button>
             <button class="totalSubmit">payer</button>
         </div>
-    {# {% else %}
-        <span class="emptyP">
-            Votre panier est vide 
-        </span>
-    {% endfor %} #}
+    {% else %}
+        <div class="cadreEmpty">
+            <span class="emptyP cart">
+                Votre panier est vide 
+            </span>
+        </div>
+    {% endif %}
+
 {% endblock %}
 

@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\AuthorRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 #[ORM\Entity(repositoryClass: AuthorRepository::class)]
 class Author
 {
+    use TimestampableEntity;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -18,9 +20,6 @@ class Author
 
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $books = null;
 
     public function getId(): ?int
     {
@@ -47,18 +46,6 @@ class Author
     public function setLastname(string $lastname): self
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function getBooks(): ?string
-    {
-        return $this->books;
-    }
-
-    public function setBooks(string $books): self
-    {
-        $this->books = $books;
 
         return $this;
     }

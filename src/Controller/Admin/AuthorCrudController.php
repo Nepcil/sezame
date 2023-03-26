@@ -4,11 +4,13 @@ namespace App\Controller\Admin;
 
 use App\Entity\Author;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use Symfony\Component\Routing\Annotation\Route;
+use ApiPlatform\OpenApi\Model\Response;
 
 class AuthorCrudController extends AbstractCrudController
 {
+
     public static function getEntityFqcn(): string
     {
         return Author::class;
@@ -17,9 +19,8 @@ class AuthorCrudController extends AbstractCrudController
     
     public function configureFields(string $pageName): iterable
     {
-        yield Field::new('Prénom');
-        yield Field::new('Nom');
-        yield CollectionField::new('livres');
+        yield Field::new('firstname');
+        yield Field::new('lastname');
     }
     
 }

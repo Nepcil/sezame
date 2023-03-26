@@ -14,12 +14,14 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $bookManager = new Book();
+        $bookManager->setImageName('nom de l\'image');
         $bookManager->setTitle('titre de l\'ouvrage');
-        $bookManager->setPicture('picture.jpg');  
         $bookManager->setSummary('resumé de l\'ouvrage');
+        // $bookManager->setCategory($this->getReference(CategoryFixtures::BOOK));
+        // $bookManager->setAuthor($this->getReference(AuthorFixtures::BOOK));
+        // $bookManager->setCollection($this->getReference(CollectionFixtures::BOOK));
         $bookManager->setIsbn(00000000000); 
         $bookManager->setPrice(12);
-        $bookManager->setRanking(3);
         $this->addReference(self::BOOK, $bookManager);
 
         $manager->persist($bookManager);
@@ -31,6 +33,7 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
         return[
             CategoryFixtures::class,
             AuthorFixtures::class,
+            CollectionFixtures::class,
         ];
     }
 }

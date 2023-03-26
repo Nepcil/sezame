@@ -9,19 +9,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CategoryController extends AbstractController
 {
-    #[Route('/home', name: 'app_category')]
+    #[Route('/book', name: 'app_book')]
     public function index(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('home/index.html.twig', [
+        return $this->render('book/index.html.twig', [
             'category' => $categoryRepository->findAll(),
         ]);
     }
-    
-    public function categoryRender(CategoryRepository $categoryRepository): Response
-    {
-        return $this->render('home/category.html.twig', [
-            'category' => $categoryRepository
-        ]);
-    } 
-    
 }

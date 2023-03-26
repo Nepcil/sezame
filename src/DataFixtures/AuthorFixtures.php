@@ -13,7 +13,6 @@ class AuthorFixtures extends Fixture
         $authorManager = new Author();
         $authorManager->setFirstname('prenom de l\'auteur');
         $authorManager->setLastname('nom de l\'auteur');  
-        $authorManager->setBooks('liste de livre(s)');
 
         $manager->flush();
     }

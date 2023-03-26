@@ -39,11 +39,6 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
-    public function __toString()
-    {
-        return $this->getName();
-    }
-
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

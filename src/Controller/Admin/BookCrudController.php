@@ -4,45 +4,57 @@ namespace App\Controller\Admin;
 
 use App\Admin\Field\VichFileField;
 use App\Entity\Book;
+use App\Form\BookType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
 class BookCrudController extends AbstractCrudController
 {
-    #[Route('/book/{id<\d+>}', name: 'app_book')]
-    public function show(Book $book): Response
-    {
-        return $this->render('book/show.html.twig', [
-            'book' => $book,
-        ]);
-    }
 
     public static function getEntityFqcn(): string
     {
         return Book::class;
     }
 
+    // public function configureFilters(Filters $filters) : Filters
+    // {
+    //     return $filters->add('Category');
+    // }
+
+    // public function configureActions(Actions $actions): Actions
+    // {
+    //     return $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
+    // }
+
     public function configureFields(string $pageName): iterable
     {
-        // yield AssociationField::new('Categorie')->autocomplete();
+        // yield AssociationField::new('category')->autocomplete();
         yield Field::new('title');
         // yield AssociationField::new('user');
         yield MoneyField::new('price')->setCurrency('EUR')->setStoredAsCents(false);
 
-        yield FormField::addPanel('Votre Livre'); 
-        yield VichFileField::new('Livre au format pdf')->onlyOnForms() ;
-        yield Field::new('Résumé du livre');
+        yield FormField::addPanel('Information générales'); 
+        // yield VichFileField::new('pathFile')->onlyOnForms() ;
+        yield TextEditorField::new('summary'); 
+        yield Field::new('updatedAt')->onlyOnIndex();
+        yield NumberField::new('Isbn');
 
-        yield FormField::addTab('Couvertures');
-        yield CollectionField::new('bookPictures')
-                ->setTemplatePath('admin/book/bookPictures.html.twig')
-                ->setEntryType(BookImageType::class);
+        yield FormField::addPanel('Couvertures de bd'); 
+        // yield CollectionField::new('pathFile')
+        //         ->allowAdd(true)
+        //         ->allowDelete(true)
+        //         ->setTemplatePath('admin/book/bookPictures.html.twig')
+        //         ->setEntryType(BookType::class );
 
     }
 

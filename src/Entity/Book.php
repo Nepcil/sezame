@@ -22,10 +22,11 @@ class Book
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Vich\UploadableField(mapping: 'picture', fileNameProperty: 'imageName')]
-    private ?File $imageFile = null;
+    #[ORM\ManyToOne(inversedBy: 'book')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    private ?Category $category = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: BookImages::class, orphanRemoval: true, cascade: ['persist'])]
@@ -34,7 +35,7 @@ class Book
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $bookReader = null;
 
-    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'bookReader')]
+    #[Vich\UploadableField(mapping: 'bookReader', fileNameProperty: 'bookReader')]
     private ?File $bookReaderFile = null;
 
     #[ORM\Column(length: 255)]
@@ -43,17 +44,11 @@ class Book
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $picture = null;
-
     #[ORM\Column(nullable: true)]
     private ?int $isbn = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $summary = null;
-
-    #[ORM\Column]
-    private ?int $ranking = null;
 
     #[ORM\ManyToMany(targetEntity: Author::class)]
     private Collection $author;
@@ -93,18 +88,6 @@ class Book
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): self
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
     public function getIsbn(): ?int
     {
         return $this->isbn;
@@ -129,43 +112,6 @@ class Book
         return $this;
     }
 
-    public function getRanking(): ?int
-    {
-        return $this->ranking;
-    }
-
-    public function setRanking(int $ranking): self
-    {
-        $this->ranking = $ranking;
-
-        return $this;
-    }
-
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
-     */
-    public function setImageFile(?File $imageFile = null): void
-    {
-        $this->imageFile = $imageFile;
-
-        if (null !== $imageFile) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
-    }
-
-    public function getImageFile(): ?File
-    {
-        return $this->imageFile;
-    }
-
     public function setImageName(?string $imageName): void
     {
         $this->imageName = $imageName;
@@ -174,6 +120,36 @@ class Book
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection<int, bookImage>
+     */
+    public function getBookImages(): Collection
+    {
+        return $this->bookImages;
+    }
+
+    public function addBookImages(BookImages $bookImage): self
+    {
+        if (!$this->bookImages->contains($bookImage)) {
+            $this->bookImages->add($bookImage);
+            $bookImage->setbook($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookImages(bookImages $bookImage): self
+    {
+        if ($this->bookImages->removeElement($bookImage)) {
+            // set the owning side to null (unless already changed)
+            if ($bookImage->getbook() === $this) {
+                $bookImage->setbook(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
@@ -250,7 +226,7 @@ class Book
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $bookReaderFile
      */
-    public function setManualFile(?File $bookReaderFile = null): void
+    public function setBookReaderFile(?File $bookReaderFile = null): void
     {
         $this->bookReaderFile = $bookReaderFile;
 

@@ -4,18 +4,18 @@ vich_uploader:
 
     mappings:
         authors:
-            uri_prefix: /authors
-            upload_destination: '%kernel.project_dir%/public/authors'
+            uri_prefix: /allPictures/authors
+            upload_destination: '%kernel.project_dir%/public/allPictures/authors'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-        bookPictures:
-                uri_prefix: /books-pictures
-                upload_destination: '%kernel.project_dir%/public/books-pictures'
-                namer: 'Vich\UploaderBundle\Naming\SmartUniqueNamer'
+        bookImages:
+            uri_prefix: /allPictures/bookPictures
+            upload_destination: '%kernel.project_dir%/public/allPictures/bookPictures'
+            namer: 'Vich\UploaderBundle\Naming\SmartUniqueNamer'
 
         allBooks:
-            uri_prefix: /allBooks
-            upload_destination: '%kernel.project_dir%/public/allBooks'
+            uri_prefix: /allPictures/allBooks
+            upload_destination: '%kernel.project_dir%/public/allPictures/allBooks'
             namer: 'Vich\UploaderBundle\Naming\SmartUniqueNamer'
             
             inject_on_load: false

@@ -13,7 +13,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class BookImages
 {
     use TimestampableEntity;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -37,13 +36,12 @@ class BookImages
     {
         return $this->id;
     }
-
     public function getPath(): ?string
     {
         return $this->path;
     }
 
-    public function setPath(string $path): self
+    public function setPath(?string $path): self
     {
         $this->path = $path;
 

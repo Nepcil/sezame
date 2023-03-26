@@ -1,26 +1,12 @@
 <nav class="navbar">
     <div class="nav">
-        <div><a class="" href="{{ path('app_home') }}"><img class="logo" src="{{ asset('interface/sezame.png') }}" alt="logo"></a></div>
+        <div><a class="" href="{{ path('app_index') }}"><img class="logo" src="{{ asset('interface/sezame.png') }}" alt="logo"></a></div>
         <div class="titreGlobal">
-            <a class="titreNav" href="{{ path('app_home') }}">Sézame livre toi !</a>
+            <a class="titreNav" href="{{ path('app_index') }}">Sézame livre toi !</a>
             <p class="slogan">Deviens ton propre éditeur de bande dessinée</p>
         </div>
         <ul class="menu">
             <li><a class="" href="{{ path('app_home') }}"><img class="icon" src="{{ asset('interface/accueil.png') }}" alt="home"><p>home</p></a></li>
-            <li>
-                <div class="categTitre">
-                    <a href=""><img class="icon" src="{{ asset('interface/pinceau.png') }}" alt="categories"><p>catégories</p></a>
-                    <div class="cadreCateg">
-                        <div class="categ">
-                            <span class="titreCateg">Sélectionner un genre</span>
-                                {% for categories in category %}
-                                    {# <a class="categLink" href="#">{{ categories }}</a><br> #}
-                                    {{render(controller('App\\Controller\\CategoryController::categoryRender'))}}
-                                {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </li>
             <li><a class="" href="{{ path('app_book') }}">
                 <img class="icon" src="{{ asset('interface/bd.png') }}" alt="bande dessinée">
                 <p>BD</p>
@@ -47,7 +33,7 @@
                         <p>connexion</p>
                     </a>
                     <a class="" href="{{ path('app_register') }}">
-                        S'inscrire
+                        <p>S'inscrire</p>
                     </a>
                 </div>
             </li>

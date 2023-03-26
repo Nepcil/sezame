@@ -31,20 +31,24 @@ h2 {
     font-size: 40px;
 }
 
-.icon {
+.icon{
     width: 30px;
 }
 
 .menu li {
     list-style: none;
     display: inline;
-    margin-right: 50px;
+    margin-right: 90px;
 }
 
 .menu {
     margin-left: 30px;
     margin-top: 40px;
     display: flex;
+}
+
+.menu p, .size12{
+    font-size: 12px;
 }
 
 .slogan {
@@ -55,12 +59,8 @@ h2 {
     text-align: center;
 }
 
-.cadreCateg {
-    position: absolute;
-}
-
 .categ {
-    width: 200px;
+    width: 250px;
     height: auto;
     display: block;
     background: lightgrey;
@@ -68,11 +68,13 @@ h2 {
     text-align: center;
     position: relative;
     padding: 10px;
-    left: -50px;
+    left: 43%;
+    top: -30px;
 }
 
 .categLink {
     color: gray;
+    margin-left: -30px;
 }
 
 .categLink:hover {
@@ -80,7 +82,12 @@ h2 {
 }
 
 .titreCateg {
-    color: #955912;;
+    color: #955912;
+    cursor: pointer;
+}
+
+.titreCateg:hover {
+    color: white;
 }
 
 .cadreEmpty {
@@ -251,6 +258,11 @@ input[type="checkbox"]:checked  {
     width: 90%;
     margin: auto;
 }
+
+.accueil {
+    width: 90%;
+    margin-left: 3%;
+} 
 
 .summary {
     width: 700px;

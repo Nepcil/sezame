@@ -10,22 +10,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class BookController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    #[Route('/book', name: 'app_book')]
-    #[Route('/showBook/{id<\d+>}', name: 'app_showBook')]
     public function index(BookRepository $bookRepository): Response
     {
-        $books = $bookRepository->findAll();
-
-        return $this->render('home/accueil.html.twig', [
-            'book' => 'book',
-        ]); 
-        return $this->render('book/index.html.twig', [
-            $books,
-        ]); 
-        return $this->render('showBook/showBook.html.twig', [
-            $books,
+        return $this->render('book/accueil.html.twig', [
+            'book' => $bookRepository->findAll(),
         ]); 
     }
 
+    #[Route('/books', name: 'app_books')]
+    public function books(BookRepository $bookRepository): Response
+    {
+        return $this->render('book/index.html.twig', [
+            'books' => $bookRepository->findAll(),
+        ]); 
+    }
+
+    #[Route('/showBook/{id}', name: 'app_showBook')]
+    public function show(BookRepository $bookRepository): Response
+    {
+        return $this->render('book/showBook.html.twig', [
+            'showBook' => $bookRepository->findAll(),
+        ]); 
+    }
 
 }

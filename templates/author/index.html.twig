@@ -5,16 +5,16 @@
 {% block body %}
     <h1>Les auteurs</h1>
     <div class="cadreAuthor">
-    {% if authors | length > 0 %}
+    {% if authors is defined %}
         {% for author in authors %}
             <a class="imgHomeBook" href="#">
                 <img class="imgBook" src="{{ asset('authors/portraitH.jpg') }}" alt="#">
             </a> 
+        {% endfor %}
         {% else %}
             <span class="empty">
                 {% include "_part/pageNotFound.html.twig" %}
             </span>   
-        {% endfor %}
     {% endif %}
 </div>
 {% endblock %}

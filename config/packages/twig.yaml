@@ -2,12 +2,12 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     form_themes: ['bootstrap_5_layout.html.twig']
     globals:
-        category: 'category'
-        categories: 'categories'
-        authors: 'authors'
-        collections: 'collections'
-        books: 'books'
-        book: 'book'
+        # category: 'category'
+        # categories: 'categories'
+        # authors: 'authors'
+        # collections: 'collections'
+        # books: 'books'
+        # book: 'book'
         
 
     paths:

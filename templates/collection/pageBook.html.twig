@@ -6,7 +6,7 @@
 
     <h1>Collection de bandes dessinées</h1>
     <div class="cadreBook">
-        {% if collection | length > 0 %}
+        {% if collections is defined %}
             {% for collection in collections %}
                 <h2 class="titleSlide">Lanfeust</h2>
                 <div class="cadreImg">
@@ -28,7 +28,7 @@
                 </div>
             {% endfor %}
         {% endif %}
-    {% if collections | length > 0 %}
+    {% if collections is defined %}
         {% for collection in collections %}
             <div class="example-wrapper">
                 <h2>{{ collection.title }}</h2>

@@ -13,7 +13,7 @@ class AuthorController extends AbstractController
     public function index(AuthorRepository $authorRepository): Response
     {
         return $this->render('author/index.html.twig', [
-            'book' => $authorRepository->findAll(),
+            'authors' => $authorRepository->findAll(),
         ]); 
     }
 }

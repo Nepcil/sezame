@@ -4,21 +4,20 @@
 
 {% block body %}
 
-    <h1>Sézame livre toi</h1> 
+    <h1>Sézame livre toi : les dernières entrées</h1> 
 
 <div class="cadreBook">
-
-{% for book in books %}
-
-    <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
-        <img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}">
-    </a>
-{% else %}
-    <span class="empty">
-        {% include "_part/pageNotFound.html.twig" %}
-    </span>
-{% endfor %}
-
+{% if books is defined %}
+    {% for book in books %}
+        {# <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
+            <img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}">
+        </a> #}
+    {% endfor %}
+    {% else %}
+        <span class="empty">
+            {% include "_part/pageNotFound.html.twig" %}
+        </span>
+{% endif %}
 </div>
 
 {% endblock %}

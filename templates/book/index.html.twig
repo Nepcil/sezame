@@ -10,24 +10,26 @@
         </a>
         <div class="collapse" id="collapseExample" class="categLink">
             <ul class="list">
-                {% for categories in category %}
-                    <li><a href="#">{{ categories }}</a></li>
-                {% endfor %}
+                {% if category is defined %}
+                    {% for category in categories %}
+                        <li><a href="#">{{ category }}</a></li>
+                    {% endfor %}
+                {% endif %}
             </ul>
         </div>
     </div>
     <div class="cadreBook">
-        {% if books | length > 0 %}
+        {% if books is defined %}
             {% for book in books %}
-                    <ul>
+                    <ul class="list">
                         <li><h2>{{ book.title }}</h2></li>
-                        {# <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}"></a></li> #} #}
+                        {# <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}"></a></li> #}
                         {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> #}
                         <li><p>{{ book.price }} €</p></li>
                     </ul>
+            {% endfor %}  
             {% else %}        
                 {% include "_part/pageNotFound.html.twig" %}
-            {% endfor %}
-        {% endif %}
+            {% endif %}
     </div>
 {% endblock %}

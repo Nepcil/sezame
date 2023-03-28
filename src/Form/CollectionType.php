@@ -14,8 +14,6 @@ class CollectionType extends AbstractType
         $builder
             ->add('title')
             ->add('price')
-            ->add('isbn')
-            ->add('ranking')
             ->add('summary')
         ;
     }

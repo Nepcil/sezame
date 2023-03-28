@@ -8,7 +8,7 @@
     <div class="cadreBook">
         {% if collections is defined %}
             {% for collection in collections %}
-                <h2 class="titleSlide">Lanfeust</h2>
+                <h2 class="titleSlide">{{ collection.title }}</h2>
                 <div class="cadreImg">
                     <div class="sousCadreImg">
                         <a href="#">
@@ -16,20 +16,14 @@
                         </a>
                     </div>
                 </div>
-            
+                <div class="example-wrapper">
+                    <h2>{{ collection.title }}</h2>
+                    <p>{{ collection.price }} €</p>
+                </div>
             {% endfor %}
             {% else %}
                 <span class="empty">
                     {% include "_part/pageNotFound.html.twig" %}
                 </span>
         {% endif %}
-    {% if collections is defined %}
-        {% for collection in collections %}
-            <div class="example-wrapper">
-                <h2>{{ collection.title }}</h2>
-                <p>{{ collection.price }} €</p>
-                <p>{{ collection.ranking }}</p>
-            </div>
-        {% endfor %}
-    {% endif %}
 {% endblock %}

@@ -22,9 +22,6 @@ class Collection
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column]
-    private ?int $ranking = null;
-
     #[ORM\Column(type: Types::TEXT)]
     private ?string $summary = null;
 
@@ -53,18 +50,6 @@ class Collection
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getRanking(): ?int
-    {
-        return $this->ranking;
-    }
-
-    public function setRanking(int $ranking): self
-    {
-        $this->ranking = $ranking;
 
         return $this;
     }

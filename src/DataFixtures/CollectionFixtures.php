@@ -14,7 +14,6 @@ class CollectionFixtures extends Fixture
         $collectionManager->setTitle('titre de l\'ouvrage');
         $collectionManager->setSummary('resumé de l\'ouvrage');
         $collectionManager->setPrice(12);
-        $collectionManager->setRanking(3);
 
         $manager->persist($collectionManager);
         $manager->flush();

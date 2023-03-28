@@ -13,7 +13,7 @@ class CollectionController extends AbstractController
     public function index(CollectionRepository $collectionRepository): Response
     {
         return $this->render('collection/index.html.twig', [
-            'collection' => $collectionRepository,
+            'collections' => $collectionRepository->findAll(),
         ]); 
     }
 
@@ -21,7 +21,7 @@ class CollectionController extends AbstractController
     public function pageBook(CollectionRepository $collectionRepository): Response
     {
         return $this->render('collection/pageBook.html.twig', [
-            'collection' => $collectionRepository,
+            'collection' => $collectionRepository->findAll(),
         ]); 
     }
 }

@@ -8,7 +8,8 @@
     {% if authors is defined %}
         {% for author in authors %}
             <a class="imgHomeBook" href="#">
-                <img class="imgBook" src="{{ asset('authors/portraitH.jpg') }}" alt="#">
+                <img class="imgBook" src="{{ asset('interface/portrait.png') }}" alt="#">
+                <p class="authorName">{{author.firstname}} {{author.lastname}}</p>
             </a> 
         {% endfor %}
         {% else %}

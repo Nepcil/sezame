@@ -169,6 +169,8 @@ h2 {
 .cadreAuthor {
     margin-left: 50px;
     margin-right: 50px;
+    display: flex;
+    justify-content: flex-start;
 }
 
 input[type="checkbox"] {
@@ -233,6 +235,13 @@ input[type="checkbox"]:checked  {
     margin-right: 30px;
 }
 
+p.authorName {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 75px;
+}
+
 /*-------------------book----------------------------*/
 
 .imgBook {
@@ -257,6 +266,12 @@ input[type="checkbox"]:checked  {
 .cadreBook {
     width: 90%;
     margin: auto;
+}
+.cadreBooks {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .accueil {

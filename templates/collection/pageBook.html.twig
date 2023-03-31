@@ -8,33 +8,20 @@
     <div class="cadreBook">
         {% if collections is defined %}
             {% for collection in collections %}
-                <h2 class="titleSlide">Lanfeust</h2>
+                <h2 class="titleSlide">{{ collection.title }}</h2>
                 <div class="cadreImg">
                     <div class="sousCadreImg">
-                        <a href="#">
-                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="collection">
-                        </a>
+                            <img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="{{ collection.title }}">
                     </div>
                 </div>
                 <div class="commandeCollection">
-                    <p class="price">132 €</p>
+                    <p class="price">{{ collection.price }} €</p>
                     <img class="imgBookCollection" src="{{ asset('interface/livre.png') }}" alt="collection">
                     <button class="btnBookCollection">commander</button>
                 </div>
-                    <p class="summary">Lanfeust est un jeune homme qui a le pouvoir de faire fondre l'acier, 
-                    un jour il découvre que grâce à une épée il acquiert un pouvoir ultime . 
-                    Sa quête commence alors, il est accompagné pour cela du sage Nicolède 
-                    de ses deux jolies filles et d'un troll ensorcelé..</p>
+                    <h2>{{ collection.title }}</h2>
+                    <p class="summary">{{ collection.summary | striptags }}</p>
                 </div>
-            {% endfor %}
-        {% endif %}
-    {% if collections is defined %}
-        {% for collection in collections %}
-            <div class="example-wrapper">
-                <h2>{{ collection.title }}</h2>
-                <p>{{ collection.price }} €</p>
-                <p>{{ collection.ranking }}</p>
-            </div>
         {% endfor %}
     {% endif %}
 {% endblock %}

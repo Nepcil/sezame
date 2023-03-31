@@ -20,7 +20,6 @@ class BookFixtures extends Fixture implements DependentFixtureInterface
         // $bookManager->setCategory($this->getReference(CategoryFixtures::BOOK));
         // $bookManager->setAuthor($this->getReference(AuthorFixtures::BOOK));
         // $bookManager->setCollection($this->getReference(CollectionFixtures::BOOK));
-        $bookManager->setIsbn(00000000000); 
         $bookManager->setPrice(12);
         $this->addReference(self::BOOK, $bookManager);
 

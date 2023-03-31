@@ -44,9 +44,6 @@ class Book
     #[ORM\Column]
     private ?float $price = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $isbn = null;
-
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $summary = null;
 
@@ -84,18 +81,6 @@ class Book
     public function setPrice(float $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getIsbn(): ?int
-    {
-        return $this->isbn;
-    }
-
-    public function setIsbn(int $isbn): self
-    {
-        $this->isbn = $isbn;
 
         return $this;
     }
@@ -205,12 +190,12 @@ class Book
         return $this;
     }
 
-    public function getbookReader(): ?string
+    public function getBookReader(): ?string
     {
         return $this->bookReader;
     }
 
-    public function setManual(?string $bookReader): self
+    public function setBookReader(?string $bookReader): self
     {
         $this->bookReader = $bookReader;
 

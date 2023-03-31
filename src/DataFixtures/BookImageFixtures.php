@@ -13,7 +13,7 @@ class BookImageFixtures extends Fixture implements DependentFixtureInterface
     {
         $bookImages = new BookImages();
         $bookImages->setPath('bd.jpg');
-        $bookImages->setPosition(1);
+        // $bookImages->setPosition(1);
         $bookImages->setBook($this->getReference(BookFixtures::BOOK));
         $manager->persist($bookImages);
 

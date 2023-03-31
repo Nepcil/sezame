@@ -78,7 +78,29 @@ h2 {
 }
 
 .categLink:hover {
+    display: block;
     color: #955912;
+}
+
+.cadreCateg {
+    display: none; 
+    height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 10;
+    background: lightgrey;
+    width: 250px;
+    left: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+.categ:hover .cadreCateg {
+    display: block;
+}
+
+.list {
+    margin-top:20px;
+    list-style: none;
 }
 
 .titreCateg {
@@ -263,10 +285,21 @@ p.authorName {
     margin-top: 40px;
 }
 
-.cadreBook {
+.cadreBook, .cadreBookSh {
     width: 90%;
     margin: auto;
 }
+
+.cadreBookSh {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.cadreShowBook {
+    
+    display: block;
+}
+
 .cadreBooks {
     width: 90%;
     margin: auto;

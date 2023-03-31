@@ -21,7 +21,7 @@ class CollectionController extends AbstractController
     public function pageBook(CollectionRepository $collectionRepository): Response
     {
         return $this->render('collection/pageBook.html.twig', [
-            'collection' => $collectionRepository->findAll(),
+            'collections' => $collectionRepository->findAll(),
         ]); 
     }
 }

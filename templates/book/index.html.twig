@@ -5,14 +5,14 @@
 {% block body %}
     <h1>Liste de bandes dessinées</h1>
     <div class="categ">
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" class="titreCateg">
+        <a class="titreCateg" >
             ↱ Sélectionner un genre ↴
         </a>
-        <div class="collapse" id="collapseExample" class="categLink">
+        <div class="cadreCateg">
             <ul class="list">
-                {% if category is defined %}
+                {% if categories is defined %}
                     {% for category in categories %}
-                        <li><a href="#">{{ category }}</a></li>
+                        <li><a class="categLink" href="#">{{ category }}</a></li>
                     {% endfor %}
                 {% endif %}
             </ul>
@@ -23,13 +23,13 @@
             {% for book in books %}
                     <ul class="list">
                         <li><h2>{{ book.title }}</h2></li>
-                        {# <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}"></a></li> #}
-                        {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> #}
+                        <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="{{ book.title }}"></a></li>
+                        {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}"#}
                         <li><p>{{ book.price }} €</p></li>
                     </ul>
             {% endfor %}  
             {% else %}        
                 {% include "_part/pageNotFound.html.twig" %}
-            {% endif %}
+            {% endif %} 
     </div>
 {% endblock %}

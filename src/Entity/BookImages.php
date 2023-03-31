@@ -25,12 +25,12 @@ class BookImages
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private ?Book $book = null;
 
-    #[ORM\Column]
-    private ?int $position = null;
+    // #[ORM\Column]
+    // private ?int $position = null;
 
     //NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'path')]
-    private ?File $pathFile = null;
+    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'bookImages')]
+    private ?File $bookImages = null;
 
     public function getId(): ?int
     {
@@ -60,17 +60,17 @@ class BookImages
         return $this;
     }
 
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
+    // public function getPosition(): ?int
+    // {
+    //     return $this->position;
+    // }
 
-    public function setPosition(int $position): self
-    {
-        $this->position = $position;
+    // public function setPosition(int $position): self
+    // {
+    //     $this->position = $position;
 
-        return $this;
-    }
+    //     return $this;
+    // }
     public function __toString()
     {
         return $this->getPath();
@@ -82,20 +82,20 @@ class BookImages
      * must be able to accept an instance of 'File' as the bundle will inject one here
      * during Doctrine hydration.
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $pathFile
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $bookImages
      */
-    public function setPathFile(?File $pathFile = null): void
+    public function setBookImages(?File $bookImages= null): void
     {
-        $this->pathFile = $pathFile;
+        $this->bookImages = $bookImages;
 
-        if (null !== $pathFile) {
+        if (null !== $bookImages) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
-    public function getPathFile(): ?File
+    public function getBookImages(): ?File
     {
-        return $this->pathFile;
+        return $this->bookImages;
     } 
 }

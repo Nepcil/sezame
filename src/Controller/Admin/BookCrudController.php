@@ -5,12 +5,7 @@ namespace App\Controller\Admin;
 use App\Admin\Field\VichFileField;
 use App\Entity\Book;
 use App\Form\BookType;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
@@ -44,17 +39,16 @@ class BookCrudController extends AbstractCrudController
         yield MoneyField::new('price')->setCurrency('EUR')->setStoredAsCents(false);
 
         yield FormField::addPanel('Information générales'); 
-        // yield VichFileField::new('pathFile')->onlyOnForms() ;
+        yield VichFileField::new('bookImages')->onlyOnForms() ;
         yield TextEditorField::new('summary'); 
         yield Field::new('updatedAt')->onlyOnIndex();
-        yield NumberField::new('Isbn');
 
         yield FormField::addPanel('Couvertures de bd'); 
-        // yield CollectionField::new('pathFile')
-        //         ->allowAdd(true)
-        //         ->allowDelete(true)
-        //         ->setTemplatePath('admin/book/bookPictures.html.twig')
-        //         ->setEntryType(BookType::class );
+        yield CollectionField::new('bokkImages')
+                ->allowAdd(true)
+                ->allowDelete(true)
+                ->setTemplatePath('admin/book/bookPictures.html.twig')
+                ->setEntryType(BookType::class );
 
     }
 

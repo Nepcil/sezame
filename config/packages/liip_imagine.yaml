@@ -7,10 +7,12 @@ liip_imagine:
         generate: true
 
     filter_sets:
+        cache: ~ 
         original: ~
-        categorY_list:
+        bookImages:
             filters:
                 thumbnail:
+                    quality: 75
                     size: [250, 250]
                     mode: inset
                     position: center

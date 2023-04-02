@@ -11,9 +11,11 @@ class AuthorFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $authorManager = new Author();
-        $authorManager->setFirstname('prenom de l\'auteur');
-        $authorManager->setLastname('nom de l\'auteur');  
+        $authorManager->setFirstname('Artur');
+        $authorManager->setLastname('Martin'); 
+        $authorManager->setBibliography('Je suis un auteur');  
 
+        $manager->persist($authorManager);
         $manager->flush();
     }
 }

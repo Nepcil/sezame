@@ -7,7 +7,7 @@
     <div class="cadreAuthor">
     {% if authors is defined %}
         {% for author in authors %}
-            <a class="imgHomeBook" href="#">
+            <a class="imgHomeBook" href="{{ path('app_showAuthor') }}">
                 <img class="imgBook" src="{{ asset('interface/portrait.png') }}" alt="#">
                 <p class="authorName">{{author.firstname}} {{author.lastname}}</p>
             </a> 

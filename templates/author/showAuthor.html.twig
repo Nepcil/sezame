@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les auteurs{% endblock %}
+
+{% block body %}
+    <h1>Les auteurs</h1>
+    <div class="cadreAuthor">
+    {% if authors is defined %}
+            {% for author in authors %}
+                <ul class="ficheAuthor">
+                    <li><img class="imgBook" src="{{ asset('interface/portrait.png') }}" alt="#"></li>
+                    <li><p class="authorName">{{author.firstname}} {{author.lastname}}</p></li>
+                    <li><p class="marginL">{{author.bibliography}}</p></li>
+                </ul>
+                <ul>
+                    <li>list book</li>
+                </ul>
+            {% endfor %}
+        {% else %}
+            <span class="empty">
+                {% include "_part/pageNotFound.html.twig" %}
+            </span>   
+    {% endif %}
+</div>
+{% endblock %}

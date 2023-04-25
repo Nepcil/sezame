@@ -2,17 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\Collection;
+use App\Entity\CollectionBook;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CollectionType extends AbstractType
+class CollectionBookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('collectionImages', VichImageType::class)
+            ->add('collectionBookImages', VichImageType::class)
             ->add('title')
             ->add('price')
             ->add('summary')
@@ -22,7 +22,7 @@ class CollectionType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Collection::class,
+            'data_class' => CollectionBook::class,
         ]);
     }
 }

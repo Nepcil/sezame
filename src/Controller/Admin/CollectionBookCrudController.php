@@ -2,17 +2,18 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Collection;
+use App\Entity\CollectionBook;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 
-class CollectionCrudController extends AbstractCrudController
+class CollectionBookCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Collection::class;
+        return CollectionBook::class;
     }
 
 
@@ -23,7 +24,7 @@ class CollectionCrudController extends AbstractCrudController
             yield TextEditorField::new('summary'),
             yield MoneyField::new('price')->setCurrency('EUR')->setStoredAsCents(false),
             yield Field::new('createdAt')->onlyOnIndex(),
-            yield Field::new('updatedAt')->onlyOnIndex(),
+            yield DateTimeField::new('updatedAt')->onlyOnIndex(),
         ];
     }
     

@@ -10,6 +10,7 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
 class Category
 {
     use TimestampableEntity;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -33,11 +34,6 @@ class Category
         $this->name = $name;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->getName();
     }
 
 }

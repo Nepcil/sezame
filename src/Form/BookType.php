@@ -17,11 +17,6 @@ class BookType extends AbstractType
         $builder
             ->add('bookImages', VichImageType::class)
             ->add('bookReader', VichFileType::class)
-            ->add('position')
-            ->add('title')
-            ->add('price')
-            ->add('isbn')
-            ->add('summary')
             ->add('submit', SubmitType::class)
         ;
     }

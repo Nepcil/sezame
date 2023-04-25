@@ -2,17 +2,20 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\CollectionImages;
+use App\Entity\CollectionBookImages;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class CollectionImagesFixtures extends Fixture
+class CollectionBookImagesFixtures extends Fixture implements DependentFixtureInterface
 {
+
     public function load(ObjectManager $manager): void
     {
-            $collectionImages = new CollectionImages();
+            $collectionImages = new CollectionBookImages();
             $collectionImages->setPath('bd.jpg');
             $collectionImages->setPosition(1);
+            $collectionImages->setCollectionBook($this->getReference(CollectionBookFixtures::COLLECTION));
             $manager->persist($collectionImages);
     
             $manager->flush();
@@ -20,7 +23,7 @@ class CollectionImagesFixtures extends Fixture
         public function getDependencies()
         {
             return [
-                CollectionFixtures::class,
+                CollectionBookFixtures::class,
             ];
         }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\BookImagesRepository;
+use App\Repository\AuthorImagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: BookImagesRepository::class)]
+#[ORM\Entity(repositoryClass: AuthorImagesRepository::class)]
 #[Vich\Uploadable]
-class BookImages
+class AuthorImages
 {
     use TimestampableEntity;
     #[ORM\Id]
@@ -21,12 +21,12 @@ class BookImages
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
-    #[ORM\ManyToOne(inversedBy: 'bookImages')]
+    #[ORM\ManyToOne(inversedBy: 'authorImages')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?Book $book = null;
+    private ?Author $author = null;
 
     //NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'path')]
+    #[Vich\UploadableField(mapping: 'authorImages', fileNameProperty: 'path')]
     private ?File $pathFile = null;
 
     public function getId(): ?int
@@ -45,14 +45,14 @@ class BookImages
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getAuthor(): ?Author
     {
-        return $this->book;
+        return $this->author;
     }
 
-    public function setBook(?Book $book): self
+    public function setAuthor(?Author $author): self
     {
-        $this->book = $book;
+        $this->author = $author;
 
         return $this;
     }

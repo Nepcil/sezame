@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\BookImagesRepository;
+use App\Repository\CollectionBookImagesRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: BookImagesRepository::class)]
+#[ORM\Entity(repositoryClass: CollectionBookImagesRepository::class)]
 #[Vich\Uploadable]
-class BookImages
+class CollectionBookImages
 {
     use TimestampableEntity;
     #[ORM\Id]
@@ -21,46 +21,59 @@ class BookImages
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
-    #[ORM\ManyToOne(inversedBy: 'bookImages')]
+    #[ORM\Column]
+    private ?int $position = null;
+
+    #[ORM\ManyToOne(inversedBy: 'collectionBookImages')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?Book $book = null;
+    private ?CollectionBook $collectionBook = null;
 
     //NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'path')]
+    #[Vich\UploadableField(mapping: 'collectionBookImages', fileNameProperty: 'path')]
     private ?File $pathFile = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
     public function getPath(): ?string
     {
         return $this->path;
     }
 
-    public function setPath(?string $path): self
+    public function setPath(string $path): self
     {
         $this->path = $path;
 
         return $this;
     }
 
-    public function getBook(): ?Book
+    public function getPosition(): ?int
     {
-        return $this->book;
+        return $this->position;
     }
 
-    public function setBook(?Book $book): self
+    public function setPosition(int $position): self
     {
-        $this->book = $book;
+        $this->position = $position;
 
         return $this;
     }
 
-    public function __toString()
+    public function getCollectionBook(): ?CollectionBook
     {
-        return $this->getPath();
+        return $this->collectionBook;
     }
+
+    public function setCollectionBook(CollectionBook $collectionBook): self
+    {
+        $this->collectionBook = $collectionBook;
+
+        return $this;
+    }
+
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this

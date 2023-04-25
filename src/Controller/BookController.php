@@ -14,16 +14,16 @@ class BookController extends AbstractController
     public function index(BookRepository $bookRepository): Response
     {
         return $this->render('home/accueil.html.twig', [
-            'book' => $bookRepository->findAll(),
+            'book' => $bookRepository->findAll()
         ]); 
     }
 
     #[Route('/book', name: 'app_book')]
-    public function books(CategoryRepository $categoryRepository,BookRepository $bookRepository): Response
+    public function books(BookRepository $bookRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('book/index.html.twig', [
             'books' => $bookRepository->findAll(),
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 
@@ -31,7 +31,7 @@ class BookController extends AbstractController
     public function show(BookRepository $bookRepository): Response
     {
         return $this->render('book/showBook.html.twig', [
-            'books' => $bookRepository->findAll(),
+            'books' => $bookRepository->findAll()
         ]); 
     }
 

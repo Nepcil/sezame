@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\CollectionImages;
+use App\Entity\CollectionBookImages;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CollectionImages>
+ * @extends ServiceEntityRepository<CollectionBookImages>
  *
- * @method CollectionImages|null find($id, $lockMode = null, $lockVersion = null)
- * @method CollectionImages|null findOneBy(array $criteria, array $orderBy = null)
- * @method CollectionImages[]    findAll()
- * @method CollectionImages[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CollectionBookImages|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CollectionBookImages|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CollectionBookImages[]    findAll()
+ * @method CollectionBookImages[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CollectionImagesRepository extends ServiceEntityRepository
+class CollectionBookImagesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CollectionImages::class);
+        parent::__construct($registry, CollectionBookImages::class);
     }
 
-    public function save(CollectionImages $entity, bool $flush = false): void
+    public function save(CollectionBookImages $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CollectionImagesRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(CollectionImages $entity, bool $flush = false): void
+    public function remove(CollectionBookImages $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CollectionImagesRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return CollectionImages[] Returns an array of CollectionImages objects
+//     * @return CollectionBookImages] Returns an array of CollectionBookImages objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CollectionImagesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CollectionImages
+//    public function findOneBySomeField($value): ?CollectionBookImages
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

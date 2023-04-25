@@ -25,6 +25,10 @@ class Author
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $biliography = null;
 
+    // #[ORM\ManyToOne(inversedBy: 'author')]
+    // #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    // private ?Book $book = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,4 +70,15 @@ class Author
         return $this;
     }
 
+    // public function getBooks(): ?string
+    // {
+    //     return $this->books;
+    // }
+
+    // public function setBooks(string $books): self
+    // {
+    //     $this->books = $books;
+
+    //     return $this;
+    // }
 }

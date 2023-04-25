@@ -2,11 +2,11 @@
 knp_gaufrette:
     stream_wrapper: ~
     adapters:
-        bookPictures:
+        allPictures:
             local:
                 directory: '%kernel.project_dir%/public/allPictures' 
 # config/packages/knp_gaufrette.yaml
     filesystems:
-        bookPictures:
-            adapter:    bookPictures
-            alias:      bookPictures_filesystem
+        allPictures:
+            adapter:    allPictures
+            alias:      allPictures_filesystem

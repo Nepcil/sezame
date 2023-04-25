@@ -5,8 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Author;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
-use Symfony\Component\Routing\Annotation\Route;
-use ApiPlatform\OpenApi\Model\Response;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class AuthorCrudController extends AbstractCrudController
 {
@@ -21,6 +20,7 @@ class AuthorCrudController extends AbstractCrudController
     {
         yield Field::new('firstname');
         yield Field::new('lastname');
+        yield TextField::new('bibliography');
     }
     
 }

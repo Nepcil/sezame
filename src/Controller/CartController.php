@@ -13,7 +13,7 @@ class CartController extends AbstractController
     public function index(CartRepository $cartRepository): Response
     {
         return $this->render('cart/index.html.twig', [
-            'cart' => 'cart',
+            'cart' => 'carts',
             'carts' => $cartRepository,
         ]);
     }

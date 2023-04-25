@@ -8,14 +8,13 @@ use Doctrine\Persistence\ObjectManager;
 
 class CategoryFixtures extends Fixture
 {
-    public const CATEGORY = 'CATEGORY';
+
     public function load(ObjectManager $manager): void
     {
         $category = new Category();
-        $category->setName('Liste de Categories');
-        $this->addReference(self::CATEGORY, $category);
-        $manager->persist($category);
+        $category->setName('Sélectionner une categorie');
 
+        $manager->persist($category);
         $manager->flush();
     }
 }

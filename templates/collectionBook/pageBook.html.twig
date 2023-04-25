@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CollectionController!{% endblock %}
+
+{% block body %}
+
+    <h1>Collection de bandes dessinées</h1>
+    <div class="cadreBook">
+        {% if collectionBooks is defined %}
+            {% for collectionBook in collectionBooks %}
+                <h2 class="titleSlide">{{ collectionBook.title }}</h2>
+                <div class="cadreImg">
+                    <div class="sousCadreImg">
+                            <img class="imgBook" src="{{ asset( collectionBook.cover ) }}" alt="{{ collectionBook.title }}">
+                    </div>
+                </div>
+                <div class="commandeCollection">
+                    <p class="price">{{ collectionBook.price }} €</p>
+                    <img class="imgBookCollection" src="{{ asset('interface/livre.png') }}" alt="collectionBook">
+                    <button class="btnBookCollection">commander</button>
+                </div>
+                    <h2>{{ collectionBook.title }}</h2>
+                    <p class="summary">{{ collectionBook.summary | striptags }}</p>
+                </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

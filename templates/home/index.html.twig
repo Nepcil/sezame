@@ -9,9 +9,9 @@
 <div class="cadreBook">
 {% if books is defined %}
     {% for book in books %}
-        {# <a class="imgHomeBook" href="{{ path('app_pageBook') }}">
-            <img class="imgBook" src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}">
-        </a> #}
+        <a class="imgHomeBook" href="{{ path('app_showBook') }}">
+            <img class="imgBook" src="{{ asset( book.imageName ) }}" alt="{{ book.title }}">
+        </a>
     {% endfor %}
     {% else %}
         <span class="empty">

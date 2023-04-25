@@ -2,19 +2,27 @@
 
 namespace App\Entity;
 
-use App\Repository\CollectionRepository;
+use App\Repository\CollectionBookRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
-#[ORM\Entity(repositoryClass: CollectionRepository::class)]
-class Collection
+#[ORM\Entity(repositoryClass: CollectionBookRepository::class)]
+class CollectionBook
 {
     use TimestampableEntity;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageName = null;
+    
+    #[ORM\OneToMany(mappedBy: 'collectionBook',  targetEntity: CollectionBookImages::class, orphanRemoval: true, cascade: ['persist'])]
+    private ?Collection $collectionBookImages;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -25,9 +33,26 @@ class Collection
     #[ORM\Column(type: Types::TEXT)]
     private ?string $summary = null;
 
+    public function __construct()
+    {
+        $this->collectionBookImages = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    public function setImageName(string $imageName): self
+    {
+        $this->imageName = $imageName;
+
+        return $this;
     }
 
     public function getTitle(): ?string
@@ -65,4 +90,5 @@ class Collection
 
         return $this;
     }
+    
 }

@@ -1,13 +1,13 @@
 
-# PHONY: help
+PHONY: help
 
-# help:
-# 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+help:
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-# install: ## Install the project
-# 	symfony composer install
-# 	symfony console doctrine:database:create
-# 	make rebuild
+install: ## Install the project
+	symfony composer install
+	symfony console doctrine:database:create
+	make rebuild
 
 rebuild: ## Rebuild the project
 	symfony console doctrine:database:drop -f

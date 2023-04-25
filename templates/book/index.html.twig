@@ -12,7 +12,7 @@
             <ul class="list">
                 {% if categories is defined %}
                     {% for category in categories %}
-                        <li><a class="categLink" href="#">{{ category }}</a></li>
+                        <li><a class="categLink" href="#">{{ category.name }}</a></li>
                     {% endfor %}
                 {% endif %}
             </ul>
@@ -23,8 +23,8 @@
             {% for book in books %}
                     <ul class="list">
                         <li><h2 class="marginL">{{ book.title }}</h2></li>
-                        <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset('interface/lanfeust.jpg') }}" alt="{{ book.title }}"></a></li>
-                        {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}"#}
+                        <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset( book.imageName ) }}" alt="{{ book.title }}"></a></li>
+                        {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> #}
                         <li><p class="price marginL">{{ book.price }} €</p></li>
                     </ul>
             {% endfor %}  

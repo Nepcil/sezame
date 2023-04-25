@@ -30,6 +30,12 @@ class Buyer
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
+    #[ORM\OneToOne(inversedBy: 'buyer', targetEntity: self::class, cascade: ['persist', 'remove'])]
+    private ?self $user = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: self::class, cascade: ['persist', 'remove'])]
+    private ?self $buyer = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,6 +97,40 @@ class Buyer
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getUser(): ?self
+    {
+        return $this->user;
+    }
+
+    public function setUser(?self $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getBuyer(): ?self
+    {
+        return $this->buyer;
+    }
+
+    public function setBuyer(?self $buyer): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($buyer === null && $this->buyer !== null) {
+            $this->buyer->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($buyer !== null && $buyer->getUser() !== $this) {
+            $buyer->setUser($this);
+        }
+
+        $this->buyer = $buyer;
 
         return $this;
     }

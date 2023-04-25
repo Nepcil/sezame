@@ -9,7 +9,7 @@
             {% for book in books %}
                     <ul class="cadreShowBook">
                         <li><h2>{{ book.title }}</h2></li>
-                        <li><a href=""><img src="{{ asset( book.picture ) | imagine_filter('thumbnail') }}" alt="{{ book.title }}"></a></li>
+                        <li><a href=""><img src="{{ asset( book.imageName ) }}" alt="{{ book.title }}"></a></li>
                     </ul>
                     <ul class="cadreShowBook">
                         <li class="price">{{ book.price }} €</li>

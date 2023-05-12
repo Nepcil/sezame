@@ -1,7 +1,7 @@
 {% set book = entity.instance %}
 {% if bookImages is defined %}
 {% for bookImage in bookImages %}
-    <img src="{{ vich_uploader_asset( bookImage, 'path')| imagine_filter('admin_thumbnail')}}" 
+    <img src="{{ vich_uploader_asset( bookImage, 'pathFile')| imagine_filter('admin_thumbnail')}}" 
     {% else %}
     <span class="badge-secondary">
         Empty

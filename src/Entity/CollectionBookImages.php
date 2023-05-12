@@ -26,10 +26,10 @@ class CollectionBookImages
 
     #[ORM\ManyToOne(inversedBy: 'collectionBookImages')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    private ?CollectionBook $collectionBook = null;
+    private ?CollectionBook $collectionImagesBook = null;
 
     //NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'collectionBookImages', fileNameProperty: 'path')]
+    #[Vich\UploadableField(mapping: 'collectionImages', fileNameProperty: 'path')]
     private ?File $pathFile = null;
 
     public function getId(): ?int
@@ -63,12 +63,12 @@ class CollectionBookImages
 
     public function getCollectionBook(): ?CollectionBook
     {
-        return $this->collectionBook;
+        return $this->collectionImagesBook;
     }
 
     public function setCollectionBook(CollectionBook $collectionBook): self
     {
-        $this->collectionBook = $collectionBook;
+        $this->collectionImagesBook = $collectionBook;
 
         return $this;
     }

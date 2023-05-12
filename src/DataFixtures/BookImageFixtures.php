@@ -13,7 +13,7 @@ class BookImageFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         $bookImages = new BookImages();
-        $bookImages->setPath('bd.jpg');
+        $bookImages->setPath('bd.jpg'); 
         $bookImages->setBook($this->getReference(BookFixtures::BOOK));
         $manager->persist($bookImages);
         $manager->flush();

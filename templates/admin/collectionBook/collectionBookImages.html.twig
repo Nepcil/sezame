@@ -1,0 +1,11 @@
+{% set book = entity.instance %}
+{% if collectionBook is defined %}
+{% for collectionImagesBook in collectionBook %}
+    <img src="{{ vich_uploader_asset( collectionImagesBook, 'pathFile')}}" 
+    {# | imagine_filter('admin_thumbnail') #}
+    {% else %}
+    <span class="badge-secondary">
+        Empty
+    </span>
+{% endfor %}
+{% endif %}

@@ -13,6 +13,8 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 class BookImages
 {
     use TimestampableEntity;
+
+    //NOTE: variables--------------------------------
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -21,18 +23,27 @@ class BookImages
     #[ORM\Column(length: 255)]
     private ?string $path = null;
 
+    #[ORM\Column(length: 255,  nullable: true)]
+    private ?string $imageName = null;
+
+    //NOTE: mapping BookImages->Book------------------------
     #[ORM\ManyToOne(inversedBy: 'bookImages')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: false,  onDelete: 'CASCADE' )]
     private ?Book $book = null;
 
-    //NOTE: This is not a mapped field of entity metadata, just a simple property.
     #[Vich\UploadableField(mapping: 'bookImages', fileNameProperty: 'path')]
     private ?File $pathFile = null;
 
+    // NOTE: This is not a mapped field of entity metadata, just a simple property.
+    #[Vich\UploadableField(mapping: 'bookReads', fileNameProperty: 'imageName')]
+    private ?File $bdFile = null;
+
+    //NOTE: Getter & Setter-----------------------------
     public function getId(): ?int
     {
         return $this->id;
     }
+    
     public function getPath(): ?string
     {
         return $this->path;
@@ -57,19 +68,23 @@ class BookImages
         return $this;
     }
 
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+
+    //NOTE: __toString---------------------------------
     public function __toString()
     {
         return $this->getPath();
     }
-    /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
-     *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $pathFile
-     */
+
+    //NOTE: Attachement path--------------------
     public function setPathFile(?File $pathFile = null): void
     {
         $this->pathFile = $pathFile;
@@ -80,8 +95,25 @@ class BookImages
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
+
     public function getPathFile(): ?File
     {
         return $this->pathFile;
     } 
+
+    //NOTE: Attachement bdFile--------------------
+
+    public function setBdFile(?File $bdFile = null): void
+    {
+        $this->bdFile = $bdFile;
+
+        if (null !== $bdFile) {
+            
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+    public function getBdFile(): ?File
+    {
+        return $this->bdFile;
+    }
 }

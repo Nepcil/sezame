@@ -11,9 +11,9 @@
                 <h2 class="titleSlide">{{ collectionBook.title }}</h2>
                 <div class="cadreImg">
                     <div class="sousCadreImg">
-                        <a href="{{ path('app_pageBook')}}">
-                            <img class="imgBook" src="{{ vich_uploader_asset( collectionBook.imageName, 'collections') }}" alt="{{ collectionBook.title }}">
-                        </a>
+                            <a href="{{ path('app_pageBook')}}">
+                                <img class="imgBook" src="{{ vich_uploader_asset( collectionBook.imageName[0] ) }}" alt="{{ collectionBook.title }}">
+                            </a>
                     </div>
                 </div>
                 <div class="example-wrapper">

@@ -23,11 +23,16 @@
             {% for book in books %}
                     <ul class="list">
                         <li><h2 class="marginL">{{ book.title }}</h2></li>
-                        <li><a href="{{ path('app_showBook') }}"><img class="imgBook" src="{{ asset( book.imageName ) }}" alt="{{ book.title }}"></a></li>
-                        {# <li><p>{{ book.author.firstname }} {{ book.author.lastname }}</p></li> #}
+                        <li><a href="{{ path('app_showBook') }}">
+                        <img class="imgBook" src="{{ vich_uploader_asset( book, 'imageName' ) }}" alt="{{ book.title }}"></a></li>
                         <li><p class="price marginL">{{ book.price }} €</p></li>
                     </ul>
             {% endfor %}  
+            {% endif %}
+        {% if authors is defined %}
+            {% for author in authors %}
+                <li><p>{{ author.firstname }} {{ author.lastname }}</p></li> 
+            {% endfor %}
             {% else %}        
                 {% include "_part/pageNotFound.html.twig" %}
             {% endif %} 

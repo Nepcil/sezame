@@ -12,7 +12,8 @@ class CollectionBookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('collectionBookImages', VichImageType::class)
+            ->add('image', VichImageType::class)
+            ->add('position')
             ->add('title')
             ->add('price')
             ->add('summary')

@@ -9,21 +9,27 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
+#[Vich\Uploadable]
 class BookType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('bookImages', VichImageType::class)
-            ->add('bookReader', VichFileType::class)
+            ->add('pathFile', VichImageType::class, [
+                'label' => 'Image'
+            ])
+            ->add('bdFile', VichFileType::class, [
+                'label' => 'Download'
+            ])
             ->add('submit', SubmitType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([
+        $resolver->setDefaults([ 
             'data_class' => BookImages::class,
         ]);
     }
